@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+  This HTML is an unreadable auto-generated mess, sorry for that.
+  The full source code of this site can be found at https://code.blicky.net/yorhel/vndb
+-->
+    <head>
+        <meta charset="utf-8"/>
+        <title>The Visual Novel Database | vndb</title>
+        <base href="https://vndb.org/"/>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="https://t.vndb.org/angel.css?07b6b2a5" type="text/css" media="all"/>
+        <link rel="search" type="application/opensearchdescription+xml" title="VNDB Visual Novel Search" href="https://vndb.org/opensearch.xml"/>
+        <link rel="alternate" type="application/atom+xml" href="/feeds/announcements.atom" title="Site Announcements"/>
+        <link rel="alternate" type="application/atom+xml" href="/feeds/changes.atom" title="Recent Changes"/>
+        <link rel="alternate" type="application/atom+xml" href="/feeds/posts.atom" title="Recent Posts"/>
+        <meta property="og:description" content="VNDB.org strives to be a comprehensive database for information about visual novels."/>
+        <meta property="og:image" content="https://s.vndb.org/s/angel-bg.jpg"/>
+        <meta property="og:site_name" content="The Visual Novel Database"/>
+        <meta property="og:title" content="The Visual Novel Database"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://vndb.org/"/>
+    </head>
+    <body>
+        <input type="checkbox" class="hidden" id="mainmenu" name="mainmenu"/>
+        <header>
+            <div id="bgright"></div>
+            <h1>
+                <a href="/">the visual novel database</a>
+            </h1>
+            <nav>
+                <label for="mainmenu">Menu</label>
+                <menu></menu>
+            </nav>
+        </header>
+        <nav>
+            <div id="support">
+                <strong>Support VNDB</strong>
+                <p>
+                    <a href="https://www.patreon.com/vndb">Patreon</a>
+                    <a href="https://www.subscribestar.com/vndb">SubscribeStar</a>
+                </p>
+            </div>
+            <article>
+                <h2>Menu</h2>
+                <div>
+                    <a href="/">Home</a>
+                    <br/>
+                    <a href="/v">Visual novels</a>
+                    <br/>
+                    <small>> </small>
+                    <a href="/g">Tags</a>
+                    <br/>
+                    <a href="/r">Releases</a>
+                    <br/>
+                    <a href="/p">Producers</a>
+                    <br/>
+                    <a href="/s">Staff</a>
+                    <br/>
+                    <a href="/c">Characters</a>
+                    <br/>
+                    <small>> </small>
+                    <a href="/i">Traits</a>
+                    <br/>
+                    <a href="/u/all">Users</a>
+                    <br/>
+                    <a href="/hist">Recent changes</a>
+                    <br/>
+                    <a href="/t">Discussion board</a>
+                    <br/>
+                    <a href="/d6">FAQ</a>
+                    <br/>
+                    <a href="/v/rand">Random visual novel</a>
+                    <br/>
+                    <a href="https://api.vndb.org/kana">API</a>
+                    - <a href="/d14">Dumps</a>
+                    - <a href="https://query.vndb.org/about">Query</a>
+                </div>
+                <form action="/v" method="get">
+                    <fieldset>
+                        <input type="text" class="text" id="sq" name="sq" value="" placeholder="search"/>
+                        <input type="submit" class="hidden" value="Search"/>
+                    </fieldset>
+                </form>
+            </article>
+            <article>
+                <h2>User menu</h2>
+                <div>
+                    <a href="/u/login?ref=%2f%3f">Login</a>
+                    <br/>
+                    <a href="/u/register">Register</a>
+                    <br/>
+                </div>
+            </article>
+            <article>
+                <h2>Database Statistics</h2>
+                <div>
+                    <dl>
+                        <dt>Visual Novels</dt>
+                        <dd>60820</dd>
+                        <dt>
+                            <small>> </small>
+                            Tags
+                        </dt>
+                        <dd>2982</dd>
+                        <dt>Releases</dt>
+                        <dd>142783</dd>
+                        <dt>Producers</dt>
+                        <dd>27431</dd>
+                        <dt>Staff</dt>
+                        <dd>50398</dd>
+                        <dt>Characters</dt>
+                        <dd>160283</dd>
+                        <dt>
+                            <small>> </small>
+                            Traits
+                        </dt>
+                        <dd>3305</dd>
+                    </dl>
+                    <div class="clearfloat"></div>
+                </div>
+            </article>
+        </nav>
+        <main>
+            <article>
+                <h1>The Visual Novel Database</h1>
+                <p class="description">
+                    VNDB.org strives to be a comprehensive database for information about visual novels.<br/>This website is built as a wiki, meaning that anyone can freely add
+                  and contribute information to the database, allowing us to create the
+                  largest, most accurate and most up-to-date visual novel database on the web.
+                
+                </p>
+                <p class="screenshots">
+                    <a href="/v53811" title="Bet on Serendipity">
+                        <img src="https://t.vndb.org/sf.t/69/212669.jpg" alt="Bet on Serendipity" width="136" height="77"/>
+                    </a>
+                    <a href="/v2007" title="Blaze of Destiny">
+                        <img src="https://t.vndb.org/sf.t/90/19890.jpg" alt="Blaze of Destiny" width="136" height="102"/>
+                    </a>
+                    <a href="/v7699" title="Mugen no Kyoukai ~Kiseki no Umi~">
+                        <img src="https://t.vndb.org/sf.t/65/174565.jpg" alt="Mugen no Kyoukai ~Kiseki no Umi~" width="136" height="102"/>
+                    </a>
+                    <a href="/v46670" title="Erotica">
+                        <img src="https://t.vndb.org/sf.t/49/183049.jpg" alt="Erotica" width="136" height="77"/>
+                    </a>
+                </p>
+            </article>
+            <div class="homepage">
+                <article>
+                    <p class="mainopts">
+                        <a href="/changes">Site changes</a>
+                    </p>
+                    <h1>
+                        <a href="/hist">Recent Changes</a>
+                        <a href="/feeds/changes.atom">
+                            <abbr class="icon-rss" title="Atom feed"></abbr>
+                        </a>
+                    </h1>
+                    <ul>
+                        <li>
+                            <span>
+                                r:<a href="/r52269.5" lang="ja-Latn" title="変態！！ 穴マニア パッケージ版">Hentai!! Ana Mania - Package Edition</a>
+                            </span>
+                            <span>
+                                by <a href="/u196807">urmom</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                c:<a href="/c165471.2" lang="ja-Latn" title="窓 鈴虫">Mado Suzumu</a>
+                            </span>
+                            <span>
+                                by <a href="/u337817">lancernolancing</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                r:<a href="/r59225.2" lang="ja-Latn" title="変態！！ 穴マニア 普及版">Hentai!! Ana Mania - Popular Edition</a>
+                            </span>
+                            <span>
+                                by <a href="/u196807">urmom</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                c:<a href="/c165473.1" lang="ja-Latn" title="千曲 ハルシゲ">Chikuma Harushige</a>
+                            </span>
+                            <span>
+                                by <a href="/u337817">lancernolancing</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                c:<a href="/c165462.4" lang="ja-Latn" title="Sophie">Sophie</a>
+                            </span>
+                            <span>
+                                by <a href="/u204467">Autumnchain</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                c:<a href="/c165465.2" lang="ja-Latn" title="Chloe">Chloe</a>
+                            </span>
+                            <span>
+                                by <a href="/u204467">Autumnchain</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                r:<a href="/r150706.2" lang="ja-Latn" title="変態！！ 穴マニア 普及版 PCゲームアウトレット">Hentai!! Ana Mania - Popular Edition PC Game Outlet</a>
+                            </span>
+                            <span>
+                                by <a href="/u196807">urmom</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                c:<a href="/c165420.16" lang="ja-Latn" title="Serana">Serana</a>
+                            </span>
+                            <span>
+                                by <a href="/u204467">Autumnchain</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                r:<a href="/r149815.2" lang="ja-Latn" title="淫獣艦獄：RE パッケージ版">Dirty Prison Ship: RE - Package Edition</a>
+                            </span>
+                            <span>
+                                by <a href="/u256918">waxo</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                r:<a href="/r150706.1" lang="ja-Latn" title="変態！！ 穴マニア 普及版 PCゲームアウトレット">Hentai!! Ana Mania - Popular Edition PC Game Outlet</a>
+                            </span>
+                            <span>
+                                by <a href="/u196807">urmom</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <p class="mainopts">
+                        <a href="/t/an">Announcements</a>
+                        <small>&amp;</small>
+                        <a href="/t/db">VNDB</a>
+                    </p>
+                    <h1>DB Discussions</h1>
+                    <ul>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 22:42">5 min ago</abbr>
+                                <a href="/t10302.995#last" title="Posted in VNDB discussions">Suspicious voting behavior reporting thread</a>
+                            </span>
+                            <span>
+                                by <a href="/u170488">shit</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:52">9 hours ago</abbr>
+                                <a href="/t2108.6667#last" title="Posted in VNDB discussions">Candidates for deletion</a>
+                            </span>
+                            <span>
+                                by <a href="/u221431">ChrisY9</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 12:45">10 hours ago</abbr>
+                                <a href="/t8242.1849#last" title="Posted in VNDB discussions">The how to edit thread</a>
+                            </span>
+                            <span>
+                                by <a href="/u196411">quevorzinov</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-10 at 19:21">27 hours ago</abbr>
+                                <a href="/t3617.3473#last" title="Posted in VNDB discussions">Tags suggestions/fixes</a>
+                            </span>
+                            <span>
+                                by <a href="/u239421">Photon</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-10 at 12:31">34 hours ago</abbr>
+                                <a href="/t3314.3449#last" title="Posted in VNDB discussions">Traits</a>
+                            </span>
+                            <span>
+                                by <a href="/u301217">shpungout</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-10 at 10:22">36 hours ago</abbr>
+                                <a href="/t9752.112#last" title="Posted in VNDB discussions">To split, or not to split? General Thread</a>
+                            </span>
+                            <span>
+                                by <a href="/u206011">bamd4869</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-09 at 01:22">3 days ago</abbr>
+                                <a href="/t950.2100#last" title="Posted in VNDB discussions">VNDB Suggestions!</a>
+                            </span>
+                            <span>
+                                by <a href="/u233047">TrashBagSlim</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-07 at 22:34">4 days ago</abbr>
+                                <a href="/t24719.2#last" title="Posted in VNDB discussions">Clarify labels in API docs?</a>
+                            </span>
+                            <span>
+                                by <a href="/u58276">wakaranai</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-07 at 06:24">5 days ago</abbr>
+                                <a href="/t24714.6#last" title="Posted in VNDB discussions">Add STOVE to supported External links</a>
+                            </span>
+                            <span>
+                                by <a href="/u306684">Moehara</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-06 at 09:57">6 days ago</abbr>
+                                <a href="/t24699.5#last" title="Posted in VNDB discussions">Why have some nicks gained color on Recent Changes</a>
+                            </span>
+                            <span>
+                                by <a href="/u306684">Moehara</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <p class="mainopts">
+                        <a href="/t/all">Forums</a>
+                        <small>&amp;</small>
+                        <a href="/w?o=d&amp;s=lastpost">Reviews</a>
+                    </p>
+                    <h1>
+                        <a href="/t/all">VN Discussions</a>
+                    </h1>
+                    <ul>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 22:10">37 min ago</abbr>
+                                <a href="/w6592.3#last" title="Review" lang="ja-Latn">Bengarachou Hakubutsushi</a>
+                            </span>
+                            <span>
+                                by <a href="/u203827">catseternal</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 21:48">59 min ago</abbr>
+                                <a href="/t24655.13#last" title="Posted in Visual novels > Dirty Prison Ship: RE">Is this really going to release this month?</a>
+                            </span>
+                            <span>
+                                by <a href="/u256918">waxo</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 21:06">101 min ago</abbr>
+                                <a href="/t24735.1#last" title="Posted in Visual novels > Tapestry -you will meet yourself-">about the protagonist</a>
+                            </span>
+                            <span>
+                                by <a href="/u255635">reiyuu11</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 19:55">3 hours ago</abbr>
+                                <a href="/t24715.18#last" title="Posted in Visual novels > Monmusu Quest! Paradox RPG Shuushou">how have I not heard of this until recently?</a>
+                            </span>
+                            <span>
+                                by <a href="/u233047">TrashBagSlim</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 19:43">3 hours ago</abbr>
+                                <a href="/t24734.1#last" title="Posted in Visual novels > Secret Desires">Can somebody find more information about this VN?</a>
+                            </span>
+                            <span>
+                                by <a href="/u170488">shit</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 11:25">11 hours ago</abbr>
+                                <a href="/t24729.4#last" title="Posted in Visual novels > Noblesse of Rouge">Hcode?</a>
+                            </span>
+                            <span>
+                                by <a href="/u175117">c2k</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 03:47">19 hours ago</abbr>
+                                <a href="/t24694.2#last" title="Posted in Visual novels > Neko Para vol.4 ~Neko to Patissier no Noel~">mobile ver</a>
+                            </span>
+                            <span>
+                                by <a href="/u6913">Quattroneko</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 03:05">20 hours ago</abbr>
+                                <a href="/t16212.10#last" title="Posted in Visual novels > Baku Ane ~Otouto Shibocchau zo!~">How good is the 1st title?</a>
+                            </span>
+                            <span>
+                                by <a href="/u280922">MasonMead</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 02:33">20 hours ago</abbr>
+                                <a href="/t24733.1#last" title="Posted in Visual novels > AIR">Using Opening photos for the profile?</a>
+                            </span>
+                            <span>
+                                by <a href="/u337728">MizukaNagamori1</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-10 at 21:36">25 hours ago</abbr>
+                                <a href="/w12662.1#last" title="Review" lang="ja-Latn">Ima Sugu Onii-chan ni Imouto da tte Iitai!</a>
+                            </span>
+                            <span>
+                                by <a href="/u145694">adamstan</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <h1>
+                        <a href="/w">Latest Reviews</a>
+                    </h1>
+                    <ul>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 22:02">45 min ago</abbr>
+                                <small>Long </small>
+                                <a href="/w16050" lang="ja-Latn" title="紅殻町博物誌">Bengarachou Hakubutsushi</a>
+                            </span>
+                            <span>
+                                by <a href="/u203827">catseternal</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 18:15">5 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16049" title="My Sweet! Housemate">My Sweet! Housemate</a>
+                            </span>
+                            <span>
+                                by <a href="/u293785">AustralianTimey</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:12">10 hours ago</abbr>
+                                <small>Med </small>
+                                <a href="/w16048" title="Z.A.T.O. // I Love the World and Everything In It">Z.A.T.O. // I Love the World and Everything In It</a>
+                            </span>
+                            <span>
+                                by <a href="/u24999">swordfish96</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:09">10 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16047" title="Ezrebeth (A Holiday Mindfudge)">Ezrebeth (A Holiday Mindfudge)</a>
+                            </span>
+                            <span>
+                                by <a href="/u24999">swordfish96</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:08">10 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16046" title="Cuscuta: A Prayer for Endless Winter">Cuscuta: A Prayer for Endless Winter</a>
+                            </span>
+                            <span>
+                                by <a href="/u24999">swordfish96</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:07">10 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16045" lang="ru-Latn" title="MAHOUTEQ!">MAHOUTEQ!</a>
+                            </span>
+                            <span>
+                                by <a href="/u24999">swordfish96</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 13:06">10 hours ago</abbr>
+                                <small>Long </small>
+                                <a href="/w16044" lang="ja-Latn" title="ロンド・リーフレット">Rondo Leaflet</a>
+                            </span>
+                            <span>
+                                by <a href="/u24999">swordfish96</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 12:24">10 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16043" title="EmyLiveShow Origins: Emy the Vampire Queen">EmyLiveShow Origins: Emy the Vampire Queen</a>
+                            </span>
+                            <span>
+                                by <a href="/u195465">kokusu</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 09:52">13 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16042" lang="it" title="Casina: The Forgotten Comedy">Casina: The Forgotten Comedy</a>
+                            </span>
+                            <span>
+                                by <a href="/u293785">AustralianTimey</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <abbr title="2026-03-11 at 07:57">15 hours ago</abbr>
+                                <small>Short </small>
+                                <a href="/w16041" lang="ja-Latn" title="素晴らしき日々～不連続存在～">Subarashiki Hibi ~Furenzoku Sonzai~</a>
+                            </span>
+                            <span>
+                                by <a href="/u335181">qwdddd</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <h1>
+                        <a href="/r?f=01731&amp;o=a&amp;s=released">Upcoming Releases</a>
+                    </h1>
+                    <ul>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <a href="/r98735" title="Eve of the 12 Months">Eve of the 12 Months</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-mac" title="Mac OS"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                … <a href="/r141204" title="Fetch Re;Quest">Fetch Re;Quest</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <a href="/r141973" lang="ja-Latn" title="花園セレナのおとしもの ～sweet memory～">Hanazono Serena no Otoshimono ~sweet memory~</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-swi" title="Nintendo Switch"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <a href="/r150192" title="Memory: Rewind">Memory: Rewind</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-swi" title="Nintendo Switch"></abbr>
+                                <abbr class="icon-lang-de" title="German"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <abbr class="icon-lang-ko" title="Korean"></abbr>
+                                … <a href="/r150193" title="Fetch Quest Remastered">Fetch Quest Remastered</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-swi" title="Nintendo Switch"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <abbr class="icon-lang-zh-Hans" title="Chinese (simplified)"></abbr>
+                                <abbr class="icon-lang-zh-Hant" title="Chinese (traditional)"></abbr>
+                                <a href="/r150194" title="Fetch Re;Quest">Fetch Re;Quest</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-swi" title="Nintendo Switch"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <abbr class="icon-lang-zh-Hans" title="Chinese (simplified)"></abbr>
+                                <abbr class="icon-lang-zh-Hant" title="Chinese (traditional)"></abbr>
+                                <a href="/r150583" lang="zh-Latn" title="树海迷宫">Shuhai Migong</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-12</b>
+                                <abbr class="icon-plat-swi" title="Nintendo Switch"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <a href="/r150609" title="Memory: Rewind- Physical Edition">Memory: Rewind- Physical Edition</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-13</b>
+                                <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <a href="/r55819" lang="ja-Latn" title="コトネイロ">Kotoneiro</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <b class="future">2026-03-13</b>
+                                <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-ja" title="Japanese"></abbr>
+                                <abbr class="icon-lang-ko" title="Korean"></abbr>
+                                <abbr class="icon-lang-zh-Hans" title="Chinese (simplified)"></abbr>
+                                <a href="/r123292" lang="zh-Latn" title="幻想乡：有罪推定~夜明前的三色堇">Huanxiang Xiang: Youzui Tuiding ~Yeming qian de Sansejin</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <h1>
+                        <a href="/r?f=01741&amp;o=d&amp;s=released">Just Released</a>
+                    </h1>
+                    <ul>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r102407" lang="ru-Latn" title="Семя Хаоса v0.4.15">Semja Haosa v0.4.15</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r102508" lang="ru-Latn" title="Любовь и секс: Вторая база v25.1.0">Ljubov' i seks: Vtoraja baza v25.1.0</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r102540" lang="ru-Latn" title="Любовь, Гордость, Предательство: Episodes 1-14">Ljubov', Gordost', Predatel'stvo: Episodes 1-14</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r102543" lang="ru-Latn" title="Новый Горизонт v0.4">Novyj Gorizont v0.4</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-mac" title="Mac OS"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-es" title="Spanish"></abbr>
+                                … <a href="/r124082" title="NTR Phone v0.38.2">NTR Phone v0.38.2</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-lang-zh-Hans" title="Chinese (simplified)"></abbr>
+                                <a href="/r135713" lang="zh-Latn" title="箱庭青春">Xiangting Qingchun</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r145142" lang="ru-Latn" title="Brain Rot v0.4">Brain Rot v0.4</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-11 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-mac" title="Mac OS"></abbr>
+                                <abbr class="icon-lang-en" title="English"></abbr>
+                                <abbr class="icon-lang-es" title="Spanish"></abbr>
+                                <a href="/r150012" lang="es" title="One in One Million">One in One Million</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-10 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r119486" lang="ru-Latn" title="Succubus Trick: Grown Up Problem v0.9.5">Succubus Trick: Grown Up Problem v0.9.5</a>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                2026-03-10 <abbr class="icon-plat-win" title="Windows"></abbr>
+                                <abbr class="icon-plat-lin" title="Linux"></abbr>
+                                <abbr class="icon-plat-and" title="Android"></abbr>
+                                <abbr class="icon-lang-ru" title="Russian"></abbr>
+                                <a href="/r128296" lang="ru-Latn" title="The Motel oct 2025 + HNY2025">The Motel oct 2025 + HNY2025</a>
+                            </span>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+            <footer>
+                <a href="https://code.blicky.net/yorhel/vndb">2.30-163</a>
+                | <a href="/d17">privacy &amp;content policy</a>
+                | <a href="/d7">about us</a>
+                | <a href="/.env">security</a>
+                | <a href="/ads.txt">advertising</a>
+                | <a href="mailto:contact@vndb.org">contact@vndb.org</a>
+            </footer>
+        </main>
+    </body>
+</html>
+
