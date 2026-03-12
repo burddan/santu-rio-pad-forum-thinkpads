@@ -25,11 +25,11 @@ html {
 }
 
 body {
-    background: var(--bodybg) url(/s/angel-bg.jpg) no-repeat
+    background: var(--bodybg) url(/imagens/angel-bg.jpg) no-repeat
 }
 
 #bgright {
-    background: url(/s/angel-right.jpg) no-repeat;
+    background: url(/imagens/angel-right.jpg) no-repeat;
     width: 433px;
     height: 140px
 }
