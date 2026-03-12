@@ -15,14 +15,14 @@ html {
   
   --footer: #1a1a1a;
 
-  --boxtitle: #d1d1d1;
+  --boxtitle: #white;
   --maintitle: #ffffff;
   --alttitle: #ff0000;
-  --boxbg: rgba(255, 255, 255, 0.15);
+  --boxbg: rgba(255, 255, 255, 0.22);
   
   /* Abas e seções secundárias um pouco mais escuras/transparentes */
-  --tabbg: rgba(255, 255, 255, 0.1);
-  --secbg: rgba(255, 255, 255, 0.05);
+  --tabbg: rgba(255, 255, 255, 0.2);
+  --secbg: rgba(255, 255, 255, 0.10);
 
   /* BORDAS: Finas e prateadas para definir as caixas */
   --border: rgba(255, 255, 255, 0.3);
@@ -74,7 +74,7 @@ html {
 }
 
 body {
-  font: 13px "Tahoma", "Arial", sans-serif;
+  font: 24px "Tahoma", "Arial", sans-serif;
   color: var(--maintext)
 }
 
@@ -108,7 +108,7 @@ b,strong,h1,h2,h3,h4,h5 {
 
 .thinkpads img {
   border: 1px solid #333;
-  width: 220px;
+  width: 680px;
   height: auto;
 }
 i,em {
@@ -477,14 +477,14 @@ main h1,main h2 {
 
 main h1 {
   color: var(--boxtitle);
-  font-size: 24px;
+  font-size: 40px;
   font-weight: normal;
   margin: -5px 0 15px 0
 }
 
 main h2.alttitle {
   color: var(--alttitle);
-  font-size: 120%;
+  font-size: 40px;
   font-weight: normal;
   margin: -17px 0 15px 15px
 }

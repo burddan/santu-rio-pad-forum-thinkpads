@@ -13,8 +13,6 @@
         <p class="thinkpads">
         <img src="/imagens/thinkpad-burddan.png" alt="">
         <img src="/imagens/thinkpad-burnedrice.png" alt="">
-        <img src="/imagens/thinkpad-t480.png" alt="">
-        <img src="/imagens/thinkpad-x61.png" alt="">
         </p>
       </article>
 
@@ -70,7 +68,6 @@
 
 
   <?php include 'footer.php'; ?>
-    </main>
 
 </main>
 </body>
