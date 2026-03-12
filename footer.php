@@ -1,15 +1,15 @@
 <footer>
           <a>
-            <img src="https://88x31.nl/gifs/bikobatanari.gif">
-          </a>
-          <a>
-            <img src="https://88x31.nl/gifs/debian.gif">
-          </a>
-          <a>
             <img src="https://88x31.nl/gifs/dawa.gif">
           </a>
           <a>
-            <img src="https://88x31.nl/gifs/discord2.gif">
+            <img src="https://cyber.dabamos.de/88x31/vim.vialle.love.anim.gif">
+          </a>
+          <a>
+            <img src="https://cyber.dabamos.de/88x31/gnu-linux.gif">
+          </a>
+          <a>
+            <img src="https://cyber.dabamos.de/88x31/blink-0.gif">
           </a>
         </footer>
 

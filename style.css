@@ -471,8 +471,7 @@ main {
 
 main h1,main h2 {
   font-family: "BigBlueTerm", "Futura", "Century Gothic", Arial, serif;
-
-  /*font-family: "Futura", "Century New Gothic", "Arial", serif */
+  font-size: 40px;
 }
 
 main h1 {
@@ -673,21 +672,25 @@ body>* nav>h1 a {
   }
 }
 
-main>footer {
-  margin: -7px auto 0 auto;
-  text-align: center;
-  color: var(--footer)
+footer {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    align-items: center;
+    gap: 15px;               /* Espaço entre um botão e outro */
+    padding: 40px 0;         /* Aumenta a altura do footer (40px em cima e embaixo) */
+    width: 100%;
 }
 
-main>footer a {
-  color: inherit;
-  text-decoration: underline
+footer a img {
+    width: 110px;            /* Original é 88px, aqui aumentamos um pouco */
+    height: auto;
+    image-rendering: pixelated; /* Mantém o aspecto "crispy" dos GIFs antigos */
+    transition: transform 0.2s; /* Efeito suave ao passar o mouse */
 }
 
-main>footer span a {
-  text-decoration: none
+footer a img:hover {
+    transform: scale(1.2);    /* Aumenta 20% quando o mouse passa em cima */
 }
-
 input.text,input.submit,input[type=text],input[type=password],input[type=email],input[type=button],input[type=submit],select,textarea,button {
   background-color: var(--boxbg);
   color: var(--maintext);

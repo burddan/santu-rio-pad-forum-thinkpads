@@ -19,7 +19,6 @@
       <div class="homepage">
         <article>
           <p class="mainopts">
-          <a href="/changes">Forum</a>
           </p>
           <h1>
             <a href="/hist">Ultimos Posts</a>
@@ -31,18 +30,12 @@
         </article>
         <article>
           <p class="mainopts">
-          <a href="/t/an">Announcements</a>
-          <small>&amp;</small>
-          <a href="/t/db">VNDB</a>
           </p>
           <h1>Legendary Models</h1>
           </ul>
         </article>
         <article>
           <p class="mainopts">
-          <a href="/t/all">Forums</a>
-          <small>&amp;</small>
-          <a href="/w?o=d&amp;s=lastpost">Reviews</a>
           </p>
           <h1>
             <a href="/t/all">Ideia 1</a>
