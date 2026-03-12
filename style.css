@@ -83,6 +83,18 @@ svg {
 b,strong,h1,h2,h3,h4,h5 {
     font-weight: bold
 }
+.thinkpads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.thinkpads img {
+  border: 1px solid #333;
+    width: 180px;
+  max-width: 100%;
+  height: auto;
+}
 
 i,em {
     font-style: italic
@@ -174,10 +186,6 @@ pre,.monospace {
     font-family: monospace !important
 }
 
-p.description,div.description {
-    margin: 10px auto !important;
-    max-width: 800px
-}
 
 .done {
     color: var(--statok)
@@ -441,8 +449,15 @@ main {
     padding: 0 0 50px 0
 }
 
+@font-face {
+    font-family: "BigBlueTerm";
+    src: url("fonts/BigBlueTerm437NerdFont-Regular.ttf") format("truetype");
+}
+
 main h1,main h2 {
-    font-family: "Futura", "Century New Gothic", "Arial", serif
+      font-family: "BigBlueTerm", "Futura", "Century Gothic", Arial, serif;
+
+    /*font-family: "Futura", "Century New Gothic", "Arial", serif */
 }
 
 main h1 {
@@ -1539,17 +1554,7 @@ span.spinner {
     padding-top: 10px
 }
 
-p.screenshots {
-    text-align: center;
-    margin-top: 10px;
-    padding: 0;
-    height: 105px;
-    overflow: hidden
-}
 
-p.screenshots img {
-    margin: 2px
-}
 
 li.announcement {
     margin-bottom: 3px;
@@ -2263,73 +2268,6 @@ div#vntags {
     text-decoration: line-through
 }
 
-#screenshots table {
-    width: 100%
-}
-
-#screenshots tr.rel td {
-    background: var(--boxbg);
-    font-weight: bold
-}
-
-#screenshots p.rel {
-    background: var(--boxbg);
-    margin: 0;
-    padding: 2px;
-    font-weight: bold;
-    text-align: center
-}
-
-#screenshots a.scrlnk {
-    margin: 2px;
-    border: none
-}
-
-#screenshots div.scr {
-    display: block;
-    padding: 0 15px;
-    text-align: center
-}
-
-#screenshots a img {
-    border: 3px solid transparent
-}
-
-#screenshots a.nsfw img {
-    border: 3px solid var(--statnok)
-}
-
-#screenshots a:hover img {
-    border: 3px solid var(--border)
-}
-
-#scrhide_s0:checked~#screenshots label[for=scrhide_s0],#scrhide_s1:checked~#screenshots label[for=scrhide_s1],#scrhide_s2:checked~#screenshots label[for=scrhide_s2],#scrhide_v0:checked~#screenshots label[for=scrhide_v0],#scrhide_v1:checked~#screenshots label[for=scrhide_v1],#scrhide_v2:checked~#screenshots label[for=scrhide_v2] {
-    color: var(--maintext)
-}
-
-#screenshots .scrlnk {
-    display: none
-}
-
-#scrhide_s0:checked~#screenshots .scrlnk_s0 {
-    display: inline
-}
-
-#scrhide_s1:checked~#screenshots .scrlnk_s1 {
-    display: inline
-}
-
-#scrhide_s2:checked~#screenshots .scrlnk {
-    display: inline
-}
-
-#scrhide_v0:checked~#screenshots .scrlnk_v0 {
-    display: none
-}
-
-#scrhide_v1:checked~#screenshots .scrlnk_v1 {
-    display: none
-}
 
 .reviews {
     display: flex;
