@@ -1,4 +1,4 @@
-<?php include '../../header.php'; ?>
+<?php include 'header.php'; ?>
 <main>
 <article>
 <h1>Base do site</h1>
@@ -8,7 +8,7 @@
 
 </article>
 
-  <?php include '../../footer.php'; ?>
+  <?php include 'footer.php'; ?>
 
 </main>
 </body>
