@@ -20,15 +20,12 @@ html {
   --alttitle: #ff0000;
   --boxbg: rgba(255, 255, 255, 0.22);
   
-  /* Abas e seções secundárias um pouco mais escuras/transparentes */
   --tabbg: rgba(255, 255, 255, 0.2);
   --secbg: rgba(255, 255, 255, 0.10);
 
-  /* BORDAS: Finas e prateadas para definir as caixas */
   --border: rgba(255, 255, 255, 0.3);
   --secborder: rgba(255, 255, 255, 0.5);
 
-  /* Diferenciais */
   --diffadd: rgba(0, 255, 0, 0.1);
   --diffdel: rgba(255, 0, 0, 0.1);
   --warnbg: rgba(255, 165, 0, 0.1);
