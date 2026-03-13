@@ -22,7 +22,7 @@
           <br/>
           <a href="/g">TimeLine</a>
           <br/>
-          <a href="/r">Legendary Models</a>
+          <a href="legendary.php">Legendary Models</a>
           <br/>
           <a href="/p">Mods</a>
           <br/>

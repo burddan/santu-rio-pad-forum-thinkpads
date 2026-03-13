@@ -22,7 +22,6 @@
           </p>
           <h1>
             <a href="/hist">Ultimos Posts</a>
-            <a href="/feeds/changes.atom">
               <abbr class="icon-rss" title="Atom feed"></abbr>
             </a>
           </h1>
@@ -32,28 +31,27 @@
           <p class="mainopts">
           </p>
           <h1>Legendary Models</h1>
+<p>
+  <a href="/thinkpads/thinkpad-701c.php">ThinkPad 701C</a>
+</p>
+<p>
+  <a href="/thinkpads/thinkpad-t480.php">ThinkPad T480 (2018)</a>
+</p>
+<p>
+  <a href="/thinkpads/thinkpad-w700ds.php">ThinkPad W700DS</a>
+</p>
+
           </ul>
         </article>
         <article>
           <p class="mainopts">
           </p>
           <h1>
-            <a href="/t/all">Ideia 1</a>
+            <a>Perfis cadastrados</a>
           </h1>
-          <ul>
-          </ul>
-        </article>
-        <article>
-          <h1>
-            <a href="/w">Ideia 3</a>
-          </h1>
-          <ul>
-          </ul>
-        </article>
-        <article>
-          <h1>
-            <a>Ideia 4</a>
-          </h1>
+<p>
+  <a href="/usuarios/burddan.php">burddan</a>
+</p>
           <ul>
           </ul>
         </article>
