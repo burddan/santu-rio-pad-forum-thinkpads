@@ -1,0 +1,106 @@
+<?php include '../header.php'; ?>
+<main>
+
+<article class="forum-post">
+
+<h1>Antena GRANDE e grossa no X230</h1>
+
+<p class="post-meta">
+Postado por <strong>burddan</strong> • 13 Mar 2026
+</p>
+
+<div class="post-content">
+
+<p>
+A internet da minha faculdade era muito ferrada, então resolvi fazer
+um mod na placa de rede do meu X230.
+</p>
+
+<p>
+Basicamente fiz o seguinte:
+</p>
+
+<ul>
+<li>Fiz um furo no chassi para colocar um conector RP-SMA</li>
+<li>Liguei ele direto na placa de Wi-Fi</li>
+<li>Instalei a maior antena de roteador genérico que eu tinha em casa</li>
+</ul>
+
+<p>
+A antena ficou gigante comparada com o notebook, mas funcionou
+melhor do que eu esperava.
+</p>
+
+<p>
+Depois de montar tudo fiz um teste de internet.
+</p>
+
+<ul>
+<li>Resultado: ~700 Mbps</li>
+</ul>
+
+<p>
+Então sim… tamanho é documento 😎
+</p>
+
+</div>
+
+</article>
+
+
+<section class="comments">
+
+<h2>Comentários</h2>
+
+<article class="comment">
+<p class="comment-meta"><strong>rfengineer</strong> • 13 Mar 2026</p>
+<p>
+Isso aí virou praticamente um roteador portátil kkkkk.
+Mas RP-SMA externo realmente melhora muito o sinal.
+</p>
+</article>
+
+<article class="comment">
+<p class="comment-meta"><strong>thinkpadmodder</strong> • 13 Mar 2026</p>
+<p>
+Clássico mod de ThinkPad. Já vi gente fazer isso em X220 também.
+</p>
+</article>
+
+<article class="comment">
+<p class="comment-meta"><strong>linuxwifi</strong> • 13 Mar 2026</p>
+<p>
+700 Mbps em Wi-Fi num X230 é absurdo, essa antena deve ser monstruosa.
+</p>
+</article>
+
+</section>
+
+
+<section class="comment-form">
+
+<h2>Responder</h2>
+
+<form>
+<p>
+<label>Nome</label><br>
+<input type="text" name="nome">
+</p>
+
+<p>
+<label>Comentário</label><br>
+<textarea name="comentario" rows="4"></textarea>
+</p>
+
+<p>
+<button type="submit">Enviar</button>
+</p>
+</form>
+
+</section>
+
+<?php include '../footer.php'; ?>
+
+</main>
+</body>
+</html>

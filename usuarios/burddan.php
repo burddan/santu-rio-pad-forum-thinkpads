@@ -1,4 +1,4 @@
-<?php include '../../header.php'; ?>
+<?php include '/header.php'; ?>
 <main>
 <article class="about-me">
   <img src="/imagens/burddan.jpg" alt="Foto de perfil" class="profile-pic">
@@ -18,7 +18,7 @@
   </div>
 </article>
 
-  <?php include '../../footer.php'; ?>
+  <?php include '/footer.php'; ?>
 
 </main>
 </body>

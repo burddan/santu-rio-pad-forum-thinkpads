@@ -25,6 +25,14 @@
               <abbr class="icon-rss" title="Atom feed"></abbr>
             </a>
           </h1>
+<abbr title="2026-03-13 at 19:32">97 min ago</abbr>
+<small>Mod de cooler na dock do t430 </small>
+by <a href="/posts/modcooler.php">Davi NV</a>
+<br>
+
+<abbr title="2026-02-13 at 13:32">4 hours ago</abbr>
+<small>antena GRANDE e grossa no x230:</small>
+by <a href="/posts/modantena.php">burddan</a>
           </ul>
         </article>
         <article>
@@ -51,6 +59,9 @@
           </h1>
 <p>
   <a href="/usuarios/burddan.php">burddan</a>
+</p>
+<p>
+  <a href="/usuarios/davinv.php">Davi NV</a>
 </p>
           <ul>
           </ul>
