@@ -1,4 +1,12 @@
-<?php include '../header.php'; ?>
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
 <main>
 
 <article class="forum-post">
@@ -98,8 +106,15 @@ Clássico mod de ThinkPad. Já vi gente fazer isso em X220 também.
 </form>
 
 </section>
+<div id="header"></div>
 
-<?php include '../footer.php'; ?>
+<script>
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
 
 </main>
 </body>

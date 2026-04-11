@@ -1,4 +1,12 @@
-<?php include 'header.php'; ?>
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
 <main>
       <article>
         <h1>Santuario Thinkpad</h1>
@@ -22,7 +30,6 @@
           </p>
           <h1>
             <a href="/hist">Ultimos Posts</a>
-              <abbr class="icon-rss" title="Atom feed"></abbr>
             </a>
           </h1>
 <abbr title="2026-03-13 at 19:32">97 min ago</abbr>
@@ -69,7 +76,15 @@ by <a href="/posts/modantena.php">burddan</a>
       </div>
 
 
-  <?php include 'footer.php'; ?>
+<div id="footer"></div>
+
+<script>
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
 
 </main>
 </body>

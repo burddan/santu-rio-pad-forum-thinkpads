@@ -1,0 +1,32 @@
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
+<main>
+<article>
+<h1>Base do site</h1>
+        <p>
+          aqui vc pode fazer oq quiser
+        </p>
+
+</article>
+
+
+<div id="header"></div>
+
+<script>
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
+</main>
+</body>
+</html>
+
