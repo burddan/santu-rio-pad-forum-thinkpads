@@ -463,7 +463,7 @@ main {
 
 @font-face {
   font-family: "BigBlueTerm";
-  src: url("fonts/BigBlueTerm437NerdFont-Regular.ttf") format("truetype");
+  src: url("../fonts/BigBlueTerm437NerdFont-Regular.ttf") format("truetype");
 }
 
 main h1,main h2 {

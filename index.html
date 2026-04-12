@@ -1,7 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
 <div id="header"></div>
 
 <script>
-fetch('header.html')
+fetch('components/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('header').innerHTML = data;
@@ -19,8 +23,8 @@ fetch('header.html')
         e um fórum para discutir tudo sobre ThinkPads.
         </p>
         <p class="thinkpads">
-        <img src="/imagens/thinkpad-burddan.png" alt="">
-        <img src="/imagens/thinkpad-burnedrice.png" alt="">
+        <img src="assets/images/thinkpad-burddan.png" alt="">
+        <img src="assets/images/thinkpad-burnedrice.png" alt="">
         </p>
       </article>
 
@@ -32,14 +36,17 @@ fetch('header.html')
             <a href="/hist">Ultimos Posts</a>
             </a>
           </h1>
+					<!--
 <abbr title="2026-03-13 at 19:32">97 min ago</abbr>
 <small>Mod de cooler na dock do t430 </small>
-by <a href="/posts/modcooler.php">Davi NV</a>
+by <a href="/posts/modcooler.html">Davi NV</a>
 <br>
 
 <abbr title="2026-02-13 at 13:32">4 hours ago</abbr>
 <small>antena GRANDE e grossa no x230:</small>
-by <a href="/posts/modantena.php">burddan</a>
+by <a href="/pages/posts/modantena.html">burddan</a>
+
+					-->
           </ul>
         </article>
         <article>
@@ -47,13 +54,13 @@ by <a href="/posts/modantena.php">burddan</a>
           </p>
           <h1>Legendary Models</h1>
 <p>
-  <a href="/thinkpads/thinkpad-701c.php">ThinkPad 701C</a>
+  <a href="/pages/thinkpads/thinkpad-701c.html">ThinkPad 701C</a>
 </p>
 <p>
-  <a href="/thinkpads/thinkpad-t480.php">ThinkPad T480 (2018)</a>
+  <a href="/pages/thinkpads/thinkpad-t480.html">ThinkPad T480 (2018)</a>
 </p>
 <p>
-  <a href="/thinkpads/thinkpad-w700ds.php">ThinkPad W700DS</a>
+  <a href="/pages/thinkpads/thinkpad-w700ds.html">ThinkPad W700DS</a>
 </p>
 
           </ul>
@@ -64,12 +71,6 @@ by <a href="/posts/modantena.php">burddan</a>
           <h1>
             <a>Perfis cadastrados</a>
           </h1>
-<p>
-  <a href="/usuarios/burddan.php">burddan</a>
-</p>
-<p>
-  <a href="/usuarios/davinv.php">Davi NV</a>
-</p>
           <ul>
           </ul>
         </article>
@@ -79,7 +80,7 @@ by <a href="/posts/modantena.php">burddan</a>
 <div id="footer"></div>
 
 <script>
-fetch('footer.html')
+fetch('components/footer.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('footer').innerHTML = data;
