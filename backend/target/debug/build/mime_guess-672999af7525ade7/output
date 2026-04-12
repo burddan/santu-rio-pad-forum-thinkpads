@@ -1,1 +1,0 @@
-cargo:rustc-env=MIME_TYPES_GENERATED_PATH=/home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/build/mime_guess-672999af7525ade7/out/mime_types_generated.rs
