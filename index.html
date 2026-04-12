@@ -1,94 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<link rel="stylesheet" href="assets/css/style.css">
-<meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <title>Santuario Thinkpad</title>
+</head>
+
+<body>
+
 <div id="header"></div>
 
 <script>
-fetch('components/header.html')
+fetch('/components/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('header').innerHTML = data;
   });
 </script>
+
 <main>
-      <article>
-        <h1>Santuario Thinkpad</h1>
-        <p>
-        ThinkPad Archive é um site feito por fãs dedicado à
-        lendária linha de notebooks ThinkPad.
+  <article>
+    <h1>Santuario Thinkpad</h1>
+    <p>
+      ThinkPad Archive é um site feito por fãs dedicado à
+      lendária linha de notebooks ThinkPad.
+    </p>
+    <p>
+      Aqui você encontrará informações sobre modelos
+      clássicos, modificações de hardware, upgrades
+      e um fórum para discutir tudo sobre ThinkPads.
+    </p>
 
-        Aqui você encontrará informações sobre modelos
-        clássicos, modificações de hardware, upgrades
-        e um fórum para discutir tudo sobre ThinkPads.
-        </p>
-        <p class="thinkpads">
-        <img src="assets/images/thinkpad-burddan.png" alt="">
-        <img src="assets/images/thinkpad-burnedrice.png" alt="">
-        </p>
-      </article>
+    <p class="thinkpads">
+      <img src="/assets/images/thinkpad-burddan.png" alt="">
+      <img src="/assets/images/thinkpad-burnedrice.png" alt="">
+    </p>
+  </article>
 
-      <div class="homepage">
-        <article>
-          <p class="mainopts">
-          </p>
-          <h1>
-            <a href="/hist">Ultimos Posts</a>
-            </a>
-          </h1>
-					<!--
-<abbr title="2026-03-13 at 19:32">97 min ago</abbr>
-<small>Mod de cooler na dock do t430 </small>
-by <a href="/posts/modcooler.html">Davi NV</a>
-<br>
+  <div class="homepage">
+    <article>
+      <h1>
+        <a href="/hist">Ultimos Posts</a>
+      </h1>
+    </article>
 
-<abbr title="2026-02-13 at 13:32">4 hours ago</abbr>
-<small>antena GRANDE e grossa no x230:</small>
-by <a href="/pages/posts/modantena.html">burddan</a>
+    <article>
+      <h1>Legendary Models</h1>
 
-					-->
-          </ul>
-        </article>
-        <article>
-          <p class="mainopts">
-          </p>
-          <h1>Legendary Models</h1>
-<p>
-  <a href="/pages/thinkpads/thinkpad-701c.html">ThinkPad 701C</a>
-</p>
-<p>
-  <a href="/pages/thinkpads/thinkpad-t480.html">ThinkPad T480 (2018)</a>
-</p>
-<p>
-  <a href="/pages/thinkpads/thinkpad-w700ds.html">ThinkPad W700DS</a>
-</p>
+      <p>
+        <a href="/pages/thinkpads/thinkpad-701c">ThinkPad 701C</a>
+      </p>
+      <p>
+        <a href="/pages/thinkpads/thinkpad-t480">ThinkPad T480 (2018)</a>
+      </p>
+      <p>
+        <a href="/pages/thinkpads/thinkpad-w700ds">ThinkPad W700DS</a>
+      </p>
+    </article>
 
-          </ul>
-        </article>
-        <article>
-          <p class="mainopts">
-          </p>
-          <h1>
-            <a>Perfis cadastrados</a>
-          </h1>
-          <ul>
-          </ul>
-        </article>
-      </div>
+    <article>
+      <h1>Perfis cadastrados</h1>
+    </article>
+  </div>
 
+  <div id="footer"></div>
 
-<div id="footer"></div>
-
-<script>
-fetch('components/footer.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('footer').innerHTML = data;
-  });
-</script>
-
+  <script>
+  fetch('/components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+  </script>
 </main>
+
 </body>
 </html>
-
-

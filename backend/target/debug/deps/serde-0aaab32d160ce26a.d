@@ -1,0 +1,12 @@
+/home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/deps/serde-0aaab32d160ce26a.d: /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/build/serde-af8a1c54c92e2ce8/out/private.rs
+
+/home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/deps/libserde-0aaab32d160ce26a.rmeta: /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/build/serde-af8a1c54c92e2ce8/out/private.rs
+
+/home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/home/burddan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/build/serde-af8a1c54c92e2ce8/out/private.rs:
+
+# env-dep:OUT_DIR=/home/burddan/projects/santu-rio-pad-forum-thinkpads/backend/target/debug/build/serde-af8a1c54c92e2ce8/out
