@@ -28,7 +28,7 @@
         </label>
       </fieldset>
 
-      <button id="btnRegister" type="button" style="margin-top: 10px; font-size: 16px; padding: 8px 14px;">
+      <button id="Registrar" type="button" style="margin-top: 10px; font-size: 16px; padding: 8px 14px;">
         Criar conta
       </button>
 
@@ -37,13 +37,12 @@
 </main>
 
 <script>
-  // Se já tem sessão, redireciona
   fetch("/me")
     .then(r => r.json())
     .then(data => { if (data.ok) window.location.href = "/"; });
 
-  document.getElementById("btnRegister").addEventListener("click", async () => {
-    const btn       = document.getElementById("btnRegister");
+  document.getElementById("Registrar").addEventListener("click", async () => {
+    const btn       = document.getElementById("Registrar");
     const msg       = document.getElementById("msg");
     const username  = document.getElementById("username").value.trim();
     const password  = document.getElementById("password").value;
@@ -52,7 +51,6 @@
 
     msg.style.display = "none";
 
-    // Validações no cliente
     if (!username || !password || !password2) {
       showMsg("Preencha todos os campos.", false);
       return;
@@ -91,16 +89,10 @@
         btn.textContent = "Criar conta";
       }
     } catch {
-      showMsg("Erro de conexão com o servidor.", false);
+      showMsg("erro de conexao com o backend.", false);
       btn.disabled = false;
       btn.textContent = "Criar conta";
     }
   });
 
-  function showMsg(text, ok) {
-    const msg = document.getElementById("msg");
-    msg.textContent = text;
-    msg.style.color = ok ? "#28a745" : "var(--standout)";
-    msg.style.display = "block";
-  }
 </script>
