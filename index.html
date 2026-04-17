@@ -40,8 +40,9 @@ fetch('/components/header.html')
   <div class="homepage">
     <article>
       <h1>
-        <a href="/hist">Ultimos Posts</a>
+        <a href="/s">Ultimos Posts</a>
       </h1>
+      <div id="latest-posts"><p>Carregando...</p></div>
     </article>
 
     <article>
@@ -71,6 +72,22 @@ fetch('/components/header.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer').innerHTML = data;
+    });
+
+  fetch('/api/posts')
+    .then(r => r.json())
+    .then(posts => {
+      const el = document.getElementById('latest-posts');
+      if (!posts.length) {
+        el.innerHTML = '<p>Nenhum post ainda.</p>';
+        return;
+      }
+      el.innerHTML = posts.slice(0, 5).map(p =>
+        '<p><a href="/s/' + p.id + '">' + p.title + '</a> <small>por ' + p.username + '</small></p>'
+      ).join('');
+    })
+    .catch(() => {
+      document.getElementById('latest-posts').innerHTML = '<p>Erro ao carregar posts.</p>';
     });
 
   fetch('/users')
