@@ -1,0 +1,94 @@
+<main>
+  <article>
+    <h1>Forum</h1>
+    <div id="create-area"></div>
+  </article>
+
+  <div id="posts-list"><p>Carregando posts...</p></div>
+</main>
+
+<script>
+  fetch('/me')
+    .then(r => r.json())
+    .then(me => {
+      if (!me.ok) return;
+      document.getElementById('create-area').innerHTML = `
+        <button id="btnToggleForm">+ Criar post</button>
+        <div id="create-form" style="display:none; margin-top:10px;">
+          <form id="postForm" enctype="multipart/form-data">
+            <fieldset>
+              <label>Título</label>
+              <input type="text" name="title" required placeholder="Título do post">
+            </fieldset>
+            <fieldset>
+              <label>Conteúdo</label>
+              <textarea name="content" required placeholder="Escreva aqui..." rows="5" style="width:100%;"></textarea>
+            </fieldset>
+            <fieldset>
+              <label>Imagem (opcional)</label>
+              <input type="file" name="image" accept="image/*">
+            </fieldset>
+            <p id="post-msg" style="display:none;"></p>
+            <button type="submit">Postar</button>
+          </form>
+        </div>
+      `;
+
+      document.getElementById('btnToggleForm').addEventListener('click', () => {
+        const f = document.getElementById('create-form');
+        f.style.display = f.style.display === 'none' ? 'block' : 'none';
+      });
+
+      document.getElementById('postForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type=submit]');
+        const msg = document.getElementById('post-msg');
+        btn.disabled = true;
+        btn.textContent = 'Postando...';
+
+        const res = await fetch('/api/posts', { method: 'POST', body: new FormData(e.target) });
+        const data = await res.json();
+
+        if (data.ok) {
+          e.target.reset();
+          document.getElementById('create-form').style.display = 'none';
+          loadPosts();
+        } else {
+          msg.textContent = data.message;
+          msg.style.display = 'block';
+        }
+        btn.disabled = false;
+        btn.textContent = 'Postar';
+      });
+    });
+
+  function escapeHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function loadPosts() {
+    fetch('/api/posts')
+      .then(r => r.json())
+      .then(posts => {
+        const el = document.getElementById('posts-list');
+        if (!posts.length) {
+          el.innerHTML = '<article><p>Nenhum post ainda. Seja o primeiro!</p></article>';
+          return;
+        }
+        el.innerHTML = posts.map(p => `
+          <article>
+            <h2><a href="/s/${p.id}">${escapeHtml(p.title)}</a></h2>
+            <small>por <strong>${escapeHtml(p.username)}</strong> &middot; ${p.created_at} &middot; ${p.comment_count} comentário(s)</small>
+            ${p.image_path ? `<p><img src="${p.image_path}" style="max-width:100%; max-height:300px; display:block; margin-top:8px;"></p>` : ''}
+            <p>${escapeHtml(p.content.length > 300 ? p.content.substring(0, 300) + '...' : p.content)}</p>
+            <a href="/s/${p.id}">Ver post completo &rarr;</a>
+          </article>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('posts-list').innerHTML = '<article><p>Erro ao carregar posts.</p></article>';
+      });
+  }
+
+  loadPosts();
+</script>

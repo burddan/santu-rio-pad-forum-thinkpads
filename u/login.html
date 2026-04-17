@@ -49,7 +49,7 @@
 
 <script>
   // Se já tem sessão, redireciona
-  fetch("/api/me")
+  fetch("/me")
     .then(r => r.json())
     .then(data => { if (data.ok) window.location.href = "/"; });
 
@@ -72,7 +72,7 @@
     btn.textContent = "Entrando...";
 
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch("/u/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

@@ -60,6 +60,7 @@ fetch('/components/header.html')
 
     <article>
       <h1>Perfis cadastrados</h1>
+      <div id="user-list"><p>Carregando...</p></div>
     </article>
   </div>
 
@@ -70,6 +71,20 @@ fetch('/components/header.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer').innerHTML = data;
+    });
+
+  fetch('/users')
+    .then(r => r.json())
+    .then(users => {
+      const el = document.getElementById('user-list');
+      if (!users.length) {
+        el.innerHTML = '<p>Nenhum perfil cadastrado ainda.</p>';
+        return;
+      }
+      el.innerHTML = users.map(u => '<p><a href="/u/' + u.username + '">' + u.username + '</a></p>').join('');
+    })
+    .catch(() => {
+      document.getElementById('user-list').innerHTML = '<p>Erro ao carregar perfis.</p>';
     });
   </script>
 </main>

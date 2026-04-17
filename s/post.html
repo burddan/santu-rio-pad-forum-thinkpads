@@ -1,0 +1,102 @@
+<main>
+  <div id="post-content"><p>Carregando...</p></div>
+  <div id="comments-section"></div>
+</main>
+
+<script>
+  const postId = location.pathname.split('/').filter(Boolean).pop();
+  let loggedUser = null;
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function renderComments(comments) {
+    const el = document.getElementById('comments-section');
+    let html = '<article><h2>Comentários (' + comments.length + ')</h2>';
+
+    if (!comments.length) {
+      html += '<p>Nenhum comentário ainda. Seja o primeiro!</p>';
+    } else {
+      html += comments.map(c => `
+        <div style="border-left: 3px solid var(--standout); padding-left: 10px; margin: 10px 0;">
+          <strong>${escapeHtml(c.username)}</strong> <small>&middot; ${c.created_at}</small>
+          <p style="margin:4px 0;">${escapeHtml(c.content)}</p>
+        </div>
+      `).join('');
+    }
+
+    if (loggedUser) {
+      html += `
+        <div style="margin-top:16px;">
+          <textarea id="commentText" rows="4" style="width:100%;" placeholder="Escreva seu comentário..."></textarea><br>
+          <button id="btnComment" style="margin-top:6px;">Comentar</button>
+          <span id="comment-msg" style="margin-left:10px;"></span>
+        </div>
+      `;
+    } else {
+      html += '<p style="margin-top:16px;"><a href="/u/login">Faça login</a> para comentar.</p>';
+    }
+
+    html += '</article>';
+    el.innerHTML = html;
+
+    if (loggedUser) {
+      document.getElementById('btnComment').addEventListener('click', submitComment);
+    }
+  }
+
+  async function submitComment() {
+    const btn = document.getElementById('btnComment');
+    const msg = document.getElementById('comment-msg');
+    const text = document.getElementById('commentText').value.trim();
+    if (!text) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    const res = await fetch(`/api/posts/${postId}/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: text }),
+    });
+    const data = await res.json();
+
+    if (data.ok) {
+      fetch(`/api/posts/${postId}`)
+        .then(r => r.json())
+        .then(d => renderComments(d.comments));
+    } else {
+      msg.textContent = data.message;
+    }
+    btn.disabled = false;
+    btn.textContent = 'Comentar';
+  }
+
+  // Carrega sessão e post em paralelo
+  Promise.all([
+    fetch('/me').then(r => r.json()),
+    fetch(`/api/posts/${postId}`).then(r => r.json()),
+  ]).then(([me, post]) => {
+    if (me.ok) loggedUser = me.message;
+
+    if (!post.id) {
+      document.getElementById('post-content').innerHTML = '<article><h1>Post não encontrado.</h1></article>';
+      return;
+    }
+
+    document.getElementById('post-content').innerHTML = `
+      <article>
+        <h1>${escapeHtml(post.title)}</h1>
+        <small>por <strong>${escapeHtml(post.username)}</strong> &middot; ${post.created_at}</small>
+        ${post.image_path ? `<p><img src="${post.image_path}" style="max-width:100%; margin-top:10px;"></p>` : ''}
+        <p style="margin-top:12px; white-space:pre-wrap;">${escapeHtml(post.content)}</p>
+        <p><a href="/s">&larr; Voltar ao forum</a></p>
+      </article>
+    `;
+
+    renderComments(post.comments);
+  }).catch(() => {
+    document.getElementById('post-content').innerHTML = '<article><p>Erro ao carregar post.</p></article>';
+  });
+</script>
