@@ -1,0 +1,103 @@
+<main>
+
+<article>
+  <h1>Login</h1>
+
+  <p id="msg" style="display:none; color: var(--standout); margin: 0 0 10px 5px;"></p>
+
+  <fieldset>
+    <label for="username">Usuário</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      tabindex="1"
+      required
+      autofocus
+    >
+  </fieldset>
+
+  <fieldset>
+    <label for="password">Senha</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      tabindex="2"
+      required
+      placeholder="Sua senha"
+    >
+  </fieldset>
+
+  <fieldset>
+    <p>Ainda não tem conta? <a href="/u/register">Criar uma conta</a></p>
+  </fieldset>
+
+  <fieldset>
+    <button
+      id="btnLogin"
+      tabindex="3"
+      style="width: 100px; font-size: 16px; padding: 8px 10px;"
+    >
+      Entrar
+    </button>
+  </fieldset>
+
+</article>
+
+</main>
+
+<script>
+  // Se já tem sessão, redireciona
+  fetch("/api/me")
+    .then(r => r.json())
+    .then(data => { if (data.ok) window.location.href = "/"; });
+
+  document.getElementById("btnLogin").addEventListener("click", async () => {
+    const btn  = document.getElementById("btnLogin");
+    const msg  = document.getElementById("msg");
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+
+    msg.style.display = "none";
+
+    if (!username || !password) {
+      msg.textContent = "Preencha todos os campos.";
+      msg.style.color = "var(--standout)";
+      msg.style.display = "block";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Entrando...";
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        msg.style.color = "#28a745";
+        msg.textContent = data.message;
+        msg.style.display = "block";
+        setTimeout(() => window.location.href = "/", 800);
+      } else {
+        msg.style.color = "var(--standout)";
+        msg.textContent = data.message;
+        msg.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Entrar";
+      }
+    } catch {
+      msg.textContent = "Erro de conexão com o servidor.";
+      msg.style.color = "var(--standout)";
+      msg.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Entrar";
+    }
+  });
+</script>

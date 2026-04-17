@@ -1,0 +1,106 @@
+<main>
+  <article>
+    <h1>Criar conta</h1>
+
+    <p id="msg" style="display:none; margin: 0 0 10px 5px;"></p>
+
+    <fieldset class="form">
+
+      <fieldset>
+        <label for="username">Nome de usuário</label>
+        <input type="text" id="username" required autofocus>
+      </fieldset>
+
+      <fieldset>
+        <label for="password">Senha</label>
+        <input type="password" id="password" required placeholder="Mínimo 6 caracteres">
+      </fieldset>
+
+      <fieldset>
+        <label for="password2">Confirmar senha</label>
+        <input type="password" id="password2" required placeholder="Repita a senha">
+      </fieldset>
+
+      <fieldset>
+        <label class="check">
+          <input type="checkbox" id="cpolicy">
+          Li e aceito as regras do fórum.
+        </label>
+      </fieldset>
+
+      <button id="btnRegister" type="button" style="margin-top: 10px; font-size: 16px; padding: 8px 14px;">
+        Criar conta
+      </button>
+
+    </fieldset>
+  </article>
+</main>
+
+<script>
+  // Se já tem sessão, redireciona
+  fetch("/api/me")
+    .then(r => r.json())
+    .then(data => { if (data.ok) window.location.href = "/"; });
+
+  document.getElementById("btnRegister").addEventListener("click", async () => {
+    const btn       = document.getElementById("btnRegister");
+    const msg       = document.getElementById("msg");
+    const username  = document.getElementById("username").value.trim();
+    const password  = document.getElementById("password").value;
+    const password2 = document.getElementById("password2").value;
+    const cpolicy   = document.getElementById("cpolicy").checked;
+
+    msg.style.display = "none";
+
+    // Validações no cliente
+    if (!username || !password || !password2) {
+      showMsg("Preencha todos os campos.", false);
+      return;
+    }
+    if (password.length < 6) {
+      showMsg("A senha deve ter pelo menos 6 caracteres.", false);
+      return;
+    }
+    if (password !== password2) {
+      showMsg("As senhas não coincidem.", false);
+      return;
+    }
+    if (!cpolicy) {
+      showMsg("Você precisa aceitar as regras do fórum.", false);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Criando...";
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        showMsg("Conta criada! Redirecionando para o login...", true);
+        setTimeout(() => window.location.href = "/u/login", 1200);
+      } else {
+        showMsg(data.message, false);
+        btn.disabled = false;
+        btn.textContent = "Criar conta";
+      }
+    } catch {
+      showMsg("Erro de conexão com o servidor.", false);
+      btn.disabled = false;
+      btn.textContent = "Criar conta";
+    }
+  });
+
+  function showMsg(text, ok) {
+    const msg = document.getElementById("msg");
+    msg.textContent = text;
+    msg.style.color = ok ? "#28a745" : "var(--standout)";
+    msg.style.display = "block";
+  }
+</script>
