@@ -7,182 +7,145 @@ use axum::{
 use uuid::Uuid;
 
 use crate::{
-    models::{ApiResponse, LoginInput, RegisterInput},
-    utils::get_session_token,
+    models::{EntradaLogin, EntradaRegistro, Resposta},
+    utils::pegar_token,
     AppState,
 };
 
-pub async fn register(
-    State(state): State<AppState>,
-    Json(payload): Json<RegisterInput>,
+// Cria uma nova conta de usuário
+pub async fn registrar(
+    State(estado): State<AppState>,
+    Json(dados): Json<EntradaRegistro>,
 ) -> Response {
-    let username = payload.username.trim().to_string();
-    let password = payload.password.trim().to_string();
+    let usuario = dados.usuario.trim().to_string();
+    let senha   = dados.senha.trim().to_string();
 
-    if username.is_empty() || password.is_empty() {
-        return (
-            StatusCode::BAD_REQUEST,
-            Json(ApiResponse { ok: false, message: "Usuário e senha são obrigatórios.".into() }),
-        )
-            .into_response();
+    if usuario.is_empty() || senha.is_empty() {
+        return erro(StatusCode::BAD_REQUEST, "Usuário e senha são obrigatórios.");
+    }
+    if senha.len() < 6 {
+        return erro(StatusCode::BAD_REQUEST, "A senha deve ter pelo menos 6 caracteres.");
     }
 
-    if password.len() < 6 {
-        return (
-            StatusCode::BAD_REQUEST,
-            Json(ApiResponse { ok: false, message: "A senha deve ter pelo menos 6 caracteres.".into() }),
-        )
-            .into_response();
-    }
+    let hash = bcrypt::hash(&senha, bcrypt::DEFAULT_COST)
+        .expect("falha ao gerar hash da senha");
 
-    let hash = bcrypt::hash(&password, bcrypt::DEFAULT_COST).expect("falha ao gerar hash");
-
-    let result = sqlx::query("INSERT INTO users (username, password) VALUES ($1, $2)")
-        .bind(&username)
+    let resultado = sqlx::query("INSERT INTO usuarios (usuario, senha) VALUES ($1, $2)")
+        .bind(&usuario)
         .bind(&hash)
-        .execute(&state.db)
+        .execute(&estado.db)
         .await;
 
-    match result {
-        Ok(_) => (
-            StatusCode::OK,
-            Json(ApiResponse { ok: true, message: "Conta criada com sucesso!".into() }),
-        )
-            .into_response(),
-        Err(e) if e.to_string().contains("duplicate key") => (
-            StatusCode::CONFLICT,
-            Json(ApiResponse { ok: false, message: "Nome de usuário já existe.".into() }),
-        )
-            .into_response(),
-        Err(_) => (
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Json(ApiResponse { ok: false, message: "Erro interno ao registrar.".into() }),
-        )
-            .into_response(),
+    match resultado {
+        Ok(_) =>
+            ok("Conta criada com sucesso!"),
+        Err(e) if e.to_string().contains("duplicate key") =>
+            erro(StatusCode::CONFLICT, "Nome de usuário já existe."),
+        Err(_) =>
+            erro(StatusCode::INTERNAL_SERVER_ERROR, "Erro interno ao registrar."),
     }
 }
 
-pub async fn login(
-    State(state): State<AppState>,
-    Json(payload): Json<LoginInput>,
+// Autentica o usuário e cria uma sessão com cookie
+pub async fn entrar(
+    State(estado): State<AppState>,
+    Json(dados): Json<EntradaLogin>,
 ) -> Response {
-    let username = payload.username.trim().to_string();
-    let password = payload.password.trim().to_string();
+    let usuario = dados.usuario.trim().to_string();
+    let senha   = dados.senha.trim().to_string();
 
-    let row = sqlx::query_as::<_, (i32, String, String)>(
-        "SELECT id, username, password FROM users WHERE username = $1",
+    // Busca o usuário no banco
+    let linha = sqlx::query_as::<_, (i32, String, String)>(
+        "SELECT id, usuario, senha FROM usuarios WHERE usuario = $1",
     )
-    .bind(&username)
-    .fetch_optional(&state.db)
+    .bind(&usuario)
+    .fetch_optional(&estado.db)
     .await;
 
-    let (user_id, db_username, hash): (i32, String, String) = match row {
+    let (id_usuario, usuario_db, hash) = match linha {
         Ok(Some(r)) => r,
-        Ok(None) => {
-            return (
-                StatusCode::UNAUTHORIZED,
-                Json(ApiResponse { ok: false, message: "Usuário ou senha incorretos.".into() }),
-            )
-                .into_response();
-        }
-        Err(_) => {
-            return (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                Json(ApiResponse { ok: false, message: "Erro interno.".into() }),
-            )
-                .into_response();
-        }
+        Ok(None)    => return erro(StatusCode::UNAUTHORIZED, "Usuário ou senha incorretos."),
+        Err(_)      => return erro(StatusCode::INTERNAL_SERVER_ERROR, "Erro interno."),
     };
 
-    if !bcrypt::verify(&password, &hash).unwrap_or(false) {
-        return (
-            StatusCode::UNAUTHORIZED,
-            Json(ApiResponse { ok: false, message: "Usuário ou senha incorretos.".into() }),
-        )
-            .into_response();
+    // Verifica a senha
+    if !bcrypt::verify(&senha, &hash).unwrap_or(false) {
+        return erro(StatusCode::UNAUTHORIZED, "Usuário ou senha incorretos.");
     }
 
+    // Cria o token de sessão
     let token = Uuid::new_v4().to_string();
     if let Err(e) = sqlx::query(
-        "INSERT INTO sessions (token, user_id, username) VALUES ($1, $2, $3)",
+        "INSERT INTO sessoes (token, id_usuario, usuario) VALUES ($1, $2, $3)",
     )
     .bind(&token)
-    .bind(user_id)
-    .bind(&db_username)
-    .execute(&state.db)
+    .bind(id_usuario)
+    .bind(&usuario_db)
+    .execute(&estado.db)
     .await
     {
-        eprintln!("ERRO AO CRIAR SESSÃO: {:?}", e);
-        return (
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Json(ApiResponse { ok: false, message: "Erro ao criar sessão.".into() }),
-        )
-            .into_response();
+        eprintln!("erro ao criar sessão: {:?}", e);
+        return erro(StatusCode::INTERNAL_SERVER_ERROR, "Erro ao criar sessão.");
     }
 
-    let cookie = format!(
-        "session={}; HttpOnly; SameSite=Strict; Path=/; Max-Age=604800",
-        token
-    );
-    let mut headers = HeaderMap::new();
-    headers.insert(header::SET_COOKIE, cookie.parse().unwrap());
+    // Define o cookie de sessão (7 dias)
+    let cookie = format!("session={}; HttpOnly; SameSite=Strict; Path=/; Max-Age=604800", token);
+    let mut cabecalhos = HeaderMap::new();
+    cabecalhos.insert(header::SET_COOKIE, cookie.parse().unwrap());
 
     (
         StatusCode::OK,
-        headers,
-        Json(ApiResponse { ok: true, message: format!("Bem-vindo, {}!", db_username) }),
+        cabecalhos,
+        Json(Resposta { ok: true, mensagem: format!("Bem-vindo, {}!", usuario_db) }),
     )
         .into_response()
 }
 
-pub async fn logout(State(state): State<AppState>, headers: HeaderMap) -> Response {
-    if let Some(token) = get_session_token(&headers) {
-        sqlx::query("DELETE FROM sessions WHERE token = $1")
+// Encerra a sessão do usuário
+pub async fn sair(State(estado): State<AppState>, cabecalhos: HeaderMap) -> Response {
+    if let Some(token) = pegar_token(&cabecalhos) {
+        sqlx::query("DELETE FROM sessoes WHERE token = $1")
             .bind(&token)
-            .execute(&state.db)
+            .execute(&estado.db)
             .await
             .ok();
     }
 
-    let clear = "session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0";
+    let limpar_cookie = "session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0";
     let mut h = HeaderMap::new();
-    h.insert(header::SET_COOKIE, clear.parse().unwrap());
+    h.insert(header::SET_COOKIE, limpar_cookie.parse().unwrap());
 
-    (
-        StatusCode::OK,
-        h,
-        Json(ApiResponse { ok: true, message: "Logout realizado.".into() }),
-    )
+    (StatusCode::OK, h, Json(Resposta { ok: true, mensagem: "Logout realizado.".into() }))
         .into_response()
 }
 
-pub async fn me(State(state): State<AppState>, headers: HeaderMap) -> Response {
-    let token = match get_session_token(&headers) {
+// Retorna o usuário logado com base no cookie de sessão
+pub async fn quem_sou(State(estado): State<AppState>, cabecalhos: HeaderMap) -> Response {
+    let token = match pegar_token(&cabecalhos) {
         Some(t) => t,
-        None => {
-            return (
-                StatusCode::UNAUTHORIZED,
-                Json(ApiResponse { ok: false, message: "Não autenticado.".into() }),
-            )
-                .into_response();
-        }
+        None    => return erro(StatusCode::UNAUTHORIZED, "Não autenticado."),
     };
 
-    let row = sqlx::query_as::<_, (String,)>("SELECT username FROM sessions WHERE token = $1")
-        .bind(&token)
-        .fetch_optional(&state.db)
-        .await;
+    let linha = sqlx::query_as::<_, (String,)>(
+        "SELECT usuario FROM sessoes WHERE token = $1",
+    )
+    .bind(&token)
+    .fetch_optional(&estado.db)
+    .await;
 
-    match row {
-        Ok(Some((username,))) => (
-            StatusCode::OK,
-            Json(ApiResponse { ok: true, message: username }),
-        )
-            .into_response(),
-        _ => (
-            StatusCode::UNAUTHORIZED,
-            Json(ApiResponse { ok: false, message: "Sessão inválida.".into() }),
-        )
-            .into_response(),
+    match linha {
+        Ok(Some((usuario,))) =>
+            (StatusCode::OK, Json(Resposta { ok: true, mensagem: usuario })).into_response(),
+        _ =>
+            erro(StatusCode::UNAUTHORIZED, "Sessão inválida."),
     }
+}
+
+// Auxiliares para respostas padronizadas
+fn ok(msg: &str) -> Response {
+    (StatusCode::OK, Json(Resposta { ok: true, mensagem: msg.into() })).into_response()
+}
+
+fn erro(status: StatusCode, msg: &str) -> Response {
+    (status, Json(Resposta { ok: false, mensagem: msg.into() })).into_response()
 }

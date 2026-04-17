@@ -5,24 +5,27 @@ use axum::{
     Json,
 };
 
-use crate::{models::{ApiResponse, UserEntry}, AppState};
+use crate::{models::{Resposta, UsuarioItem}, AppState};
 
-pub async fn list_users(State(state): State<AppState>) -> Response {
-    let rows = sqlx::query_as::<_, (String,)>("SELECT username FROM users ORDER BY id ASC")
-        .fetch_all(&state.db)
-        .await;
+// Retorna a lista de todos os usuários cadastrados
+pub async fn listar_usuarios(State(estado): State<AppState>) -> Response {
+    let linhas = sqlx::query_as::<_, (String,)>(
+        "SELECT usuario FROM usuarios ORDER BY id ASC",
+    )
+    .fetch_all(&estado.db)
+    .await;
 
-    match rows {
-        Ok(rows) => {
-            let users: Vec<UserEntry> = rows
+    match linhas {
+        Ok(linhas) => {
+            let usuarios: Vec<UsuarioItem> = linhas
                 .into_iter()
-                .map(|(username,)| UserEntry { username })
+                .map(|(usuario,)| UsuarioItem { usuario })
                 .collect();
-            (StatusCode::OK, Json(users)).into_response()
+            (StatusCode::OK, Json(usuarios)).into_response()
         }
         Err(_) => (
             StatusCode::INTERNAL_SERVER_ERROR,
-            Json(ApiResponse { ok: false, message: "Erro ao buscar usuários.".into() }),
+            Json(Resposta { ok: false, mensagem: "Erro ao buscar usuários.".into() }),
         )
             .into_response(),
     }

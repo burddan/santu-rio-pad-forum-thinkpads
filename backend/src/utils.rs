@@ -1,34 +1,37 @@
 use axum::http::{header, HeaderMap};
 
-pub fn get_session_token(headers: &HeaderMap) -> Option<String> {
+// Extrai o token de sessão do cookie da requisição
+pub fn pegar_token(headers: &HeaderMap) -> Option<String> {
     let cookies = headers.get(header::COOKIE)?.to_str().ok()?;
-    for part in cookies.split(';') {
-        let part = part.trim();
-        if let Some(val) = part.strip_prefix("session=") {
-            return Some(val.to_string());
+    for parte in cookies.split(';') {
+        let parte = parte.trim();
+        if let Some(token) = parte.strip_prefix("session=") {
+            return Some(token.to_string());
         }
     }
     None
 }
 
-pub fn wrap_page(title: &str, body: &str) -> String {
+// Envolve o conteúdo HTML parcial em um documento completo com CSS, header e footer
+pub fn montar_pagina(titulo: &str, corpo: &str) -> String {
     format!(
         r##"<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <title>{title}</title>
+  <title>{titulo}</title>
 </head>
 <body>
 
 <div id="header"></div>
 
-{body}
+{corpo}
 
 <div id="footer"></div>
 
 <script>
+  // Carrega o header e verifica se o usuário está logado
   fetch('/components/header.html')
     .then(r => r.text())
     .then(html => {{
@@ -41,7 +44,7 @@ pub fn wrap_page(title: &str, body: &str) -> String {
       if (!menu) return;
       if (me.ok) {{
         menu.innerHTML =
-          '<span>Bem vindo, ' + me.message + '</span><br>' +
+          '<span>Bem vindo, ' + me.mensagem + '</span><br>' +
           '<a href="#" id="btnLogout">Logout</a>';
         document.getElementById('btnLogout').addEventListener('click', function(e) {{
           e.preventDefault();
@@ -51,14 +54,15 @@ pub fn wrap_page(title: &str, body: &str) -> String {
     }})
     .catch(function() {{}});
 
+  // Carrega o footer
   fetch('/components/footer.html')
     .then(r => r.text())
-    .then(data => {{ document.getElementById('footer').innerHTML = data; }});
+    .then(html => {{ document.getElementById('footer').innerHTML = html; }});
 </script>
 
 </body>
 </html>"##,
-        title = title,
-        body = body,
+        titulo = titulo,
+        corpo = corpo,
     )
 }

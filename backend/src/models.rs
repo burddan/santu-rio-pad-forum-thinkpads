@@ -1,59 +1,67 @@
 use serde::{Deserialize, Serialize};
 
+// --- Entrada de dados ---
+
 #[derive(Deserialize)]
-pub struct RegisterInput {
-    pub username: String,
-    pub password: String,
+pub struct EntradaRegistro {
+    pub usuario: String,
+    pub senha: String,
 }
 
 #[derive(Deserialize)]
-pub struct LoginInput {
-    pub username: String,
-    pub password: String,
+pub struct EntradaLogin {
+    pub usuario: String,
+    pub senha: String,
 }
+
+#[derive(Deserialize)]
+pub struct EntradaComentario {
+    pub conteudo: String,
+}
+
+// --- Respostas da API ---
 
 #[derive(Serialize)]
-pub struct ApiResponse {
+pub struct Resposta {
     pub ok: bool,
-    pub message: String,
+    pub mensagem: String,
 }
 
-#[derive(Serialize)]
-pub struct UserEntry {
-    pub username: String,
-}
+// --- Dados de usuário ---
 
 #[derive(Serialize)]
-pub struct PostSummary {
+pub struct UsuarioItem {
+    pub usuario: String,
+}
+
+// --- Dados do fórum ---
+
+#[derive(Serialize)]
+pub struct PostResumo {
     pub id: i32,
-    pub username: String,
-    pub title: String,
-    pub content: String,
-    pub image_path: Option<String>,
-    pub created_at: String,
-    pub comment_count: i64,
+    pub usuario: String,
+    pub titulo: String,
+    pub conteudo: String,
+    pub imagem: Option<String>,
+    pub criado_em: String,
+    pub total_comentarios: i64,
 }
 
 #[derive(Serialize)]
-pub struct CommentItem {
+pub struct ComentarioItem {
     pub id: i32,
-    pub username: String,
-    pub content: String,
-    pub created_at: String,
+    pub usuario: String,
+    pub conteudo: String,
+    pub criado_em: String,
 }
 
 #[derive(Serialize)]
-pub struct PostDetail {
+pub struct PostCompleto {
     pub id: i32,
-    pub username: String,
-    pub title: String,
-    pub content: String,
-    pub image_path: Option<String>,
-    pub created_at: String,
-    pub comments: Vec<CommentItem>,
-}
-
-#[derive(Deserialize)]
-pub struct CommentInput {
-    pub content: String,
+    pub usuario: String,
+    pub titulo: String,
+    pub conteudo: String,
+    pub imagem: Option<String>,
+    pub criado_em: String,
+    pub comentarios: Vec<ComentarioItem>,
 }
